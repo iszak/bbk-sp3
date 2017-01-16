@@ -9,7 +9,7 @@ import java.lang.reflect.*;
  * TODO: Print annotations (class and methods)
  * TODO: Print generics
  * TODO: Print superclass
- * TODO: Print return types
+ * TODO: Print constructor return types
  * TODO: Print parameters
  * TODO: Exclude synthetics (methods)
  */
@@ -32,7 +32,7 @@ class Reflection
             System.out.println();
 
 //            printConstructors(klass);
-//            printMethods(klass);
+            printMethods(klass);
 //            printFields(klass);
         } catch (ClassNotFoundException exception) {
             System.out.println(exception.toString());
@@ -57,8 +57,8 @@ class Reflection
             Method method = methods[index];
 
             printModifiers(method.getModifiers());
-            System.out.print(method.getReturnType().getName());
-            System.out.print(method.getName());
+            System.out.print(method.getReturnType().getName() + " ");
+            System.out.println(method.getName() + "()");
         }
     }
 

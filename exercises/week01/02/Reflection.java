@@ -6,7 +6,6 @@ import java.lang.reflect.*;
  * interface of the class in Java syntax (interface or class, modifiers, constructors, methods,
  * fields; no method bodies).
  *
- * TODO: Print package
  * TODO: Print annotations (class and methods)
  * TODO: Print generics
  * TODO: Print superclass
@@ -21,12 +20,15 @@ class Reflection
         try {
             Class klass = Class.forName(args[0]);
 
+            System.out.println("package " + klass.getPackage().getName() + ";");
+            System.out.println();
+
             printInterfaces(klass);
             System.out.println();
 
             printClassModifiers(klass);
             System.out.print("class ");
-            System.out.print(klass.getName());
+            System.out.print(klass.getSimpleName());
             System.out.println();
 
 //            printConstructors(klass);

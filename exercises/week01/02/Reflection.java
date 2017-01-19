@@ -16,8 +16,15 @@ class Reflection
 {
     public static void main(String[] args)
     {
+        if (args.length == 0) {
+            System.out.println("You must provide at least one class to look up");
+            System.exit(1);
+        }
+
+        String className = args[0];
+
         try {
-            Class klass = Class.forName(args[0]);
+            Class klass = Class.forName(className);
 
             System.out.println("Package:");
             System.out.println("package " + klass.getPackage().getName() + ";");
@@ -41,7 +48,7 @@ class Reflection
             printFields(klass);
             System.out.println();
         } catch (ClassNotFoundException exception) {
-            System.out.println(exception.toString());
+            System.out.println("The requested class " + className + " is not found");
         }
     }
 

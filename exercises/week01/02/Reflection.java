@@ -13,26 +13,30 @@ import java.lang.reflect.*;
  */
 class Reflection
 {
-    public static void main(String[] args)
+    public static void main(String[] arguments)
     {
-        if (args.length == 0) {
+        if (arguments.length == 0) {
             System.out.println("You must provide at least one class to look up");
             System.exit(1);
         }
 
-        String className = args[0];
+        for (Integer index = 0; index < arguments.length; index++) {
+            String className = arguments[index];
 
-        try {
-            Class klass = Class.forName(className);
+            try {
+                Class klass = Class.forName(className);
 
-            printPackage(klass);
-            printInterfaces(klass);
-            printClass(klass);
-            printConstructors(klass);
-            printMethods(klass);
-            printFields(klass);
-        } catch (ClassNotFoundException exception) {
-            System.out.println("The requested class " + className + " is not found");
+                printPackage(klass);
+                printInterfaces(klass);
+                printClass(klass);
+                printConstructors(klass);
+                printMethods(klass);
+                printFields(klass);
+
+                System.out.println("\n\n");
+            } catch (ClassNotFoundException exception) {
+                System.out.println("The requested class " + className + " is not found");
+            }
         }
     }
 

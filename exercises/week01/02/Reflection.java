@@ -9,7 +9,6 @@ import java.lang.reflect.*;
  * TODO: Print annotations (class and methods)
  * TODO: Print generics
  * TODO: Print superclass
- * TODO: Print constructor return types
  * TODO: Print parameters
  * TODO: Exclude synthetics (methods)
  */
@@ -20,18 +19,20 @@ class Reflection
         try {
             Class klass = Class.forName(args[0]);
 
+            System.out.println("Package:");
             System.out.println("package " + klass.getPackage().getName() + ";");
             System.out.println();
 
             printInterfaces(klass);
             System.out.println();
 
-            printClassModifiers(klass);
+            System.out.println("Class:");
+            printModifiers(klass.getModifiers());
             System.out.print("class ");
-            System.out.print(klass.getSimpleName());
+            System.out.println(klass.getSimpleName());
             System.out.println();
 
-//            printConstructors(klass);
+            printConstructors(klass);
             printMethods(klass);
 //            printFields(klass);
         } catch (ClassNotFoundException exception) {
@@ -70,20 +71,12 @@ class Reflection
             Constructor constructor = constructors[index];
 
             printModifiers(constructor.getModifiers());
+            System.out.print(klass.getName() + " ");
+            System.out.println(constructor.getName() + "()");
             printParameters(constructor);
 
             index++;
         }
-    }
-
-    private static void printReturnType(Method executable) {
-        executable.getReturnType();
-    }
-
-    private static void printClassModifiers(Class klass) {
-        System.out.println("Class modifiers: ");
-
-        printModifiers(klass.getModifiers());
     }
 
     private static void printModifiers(int currentModifiers) {

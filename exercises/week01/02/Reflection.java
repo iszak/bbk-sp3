@@ -33,8 +33,13 @@ class Reflection
             System.out.println();
 
             printConstructors(klass);
+            System.out.println();
+
             printMethods(klass);
-//            printFields(klass);
+            System.out.println();
+
+            printFields(klass);
+            System.out.println();
         } catch (ClassNotFoundException exception) {
             System.out.println(exception.toString());
         }
@@ -43,6 +48,7 @@ class Reflection
     private static void printFields(Class klass) {
         Field[] fields = klass.getFields();
 
+        System.out.println("Fields: ");
         for (Integer index = 0; index < fields.length; index++) {
             Field field = fields[index];
 

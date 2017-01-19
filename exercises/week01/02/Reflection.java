@@ -9,7 +9,6 @@ import java.lang.reflect.*;
  * TODO: Print annotations (class and methods)
  * TODO: Print generics
  * TODO: Print superclass
- * TODO: Print parameters
  * TODO: Exclude synthetics (methods)
  */
 class Reflection
@@ -72,7 +71,11 @@ class Reflection
 
             printModifiers(method.getModifiers());
             System.out.print(method.getReturnType().getName() + " ");
-            System.out.println(method.getName() + "()");
+            System.out.print(method.getName());
+            System.out.print("(");
+            printParameters(method);
+            System.out.print(")");
+            System.out.println();
         }
     }
 
@@ -85,8 +88,11 @@ class Reflection
 
             printModifiers(constructor.getModifiers());
             System.out.print(klass.getName() + " ");
-            System.out.println(constructor.getName() + "()");
+            System.out.print(constructor.getName());
+            System.out.print("(");
             printParameters(constructor);
+            System.out.print(")");
+            System.out.println();
 
             index++;
         }
@@ -97,6 +103,15 @@ class Reflection
     }
 
     private static void printParameters(Executable executable) {
+        Parameter[] parameters = executable.getParameters();
+
+        for (Integer index = 0; index < parameters.length; index++) {
+            Parameter parameter = parameters[index];
+            System.out.print(parameter.getClass().getName() + " " + parameter.getName());
+            if (index != parameters.length - 1) {
+                System.out.print(", ");
+            }
+        }
     }
 
     private static void printInterfaces(Class klass) {

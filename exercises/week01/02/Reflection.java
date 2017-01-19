@@ -8,8 +8,7 @@ import java.lang.reflect.*;
  *
  * TODO: Print annotations (class and methods)
  * TODO: Print generics
- * TODO: Print superclass
- * TODO: Exclude synthetics (methods)
+ * TODO: Look into synthetics and volatile methods? classes?
  */
 class Reflection
 {
@@ -29,6 +28,7 @@ class Reflection
                 printPackage(klass);
                 printInterfaces(klass);
                 printClass(klass);
+                printSuperClass(klass);
                 printConstructors(klass);
                 printMethods(klass);
                 printFields(klass);
@@ -40,14 +40,26 @@ class Reflection
         }
     }
 
+    private static void printSuperClass(Class klass) {
+        Class superClass = klass.getSuperclass();
+
+        if (superClass != null) {
+            System.out.println("Superclass:");
+            printClassDeclaration(superClass);
+        }
+    }
+
     private static void printPackage(Class klass) {
         System.out.println("Package:");
         System.out.println("package " + klass.getPackage().getName() + ";");
-        System.out.println();
     }
 
     private static void printClass(Class klass) {
         System.out.println("Class:");
+        printClassDeclaration(klass);
+    }
+
+    private static void printClassDeclaration(Class klass) {
         printModifiers(klass.getModifiers());
         System.out.print("class ");
         System.out.println(klass.getSimpleName());

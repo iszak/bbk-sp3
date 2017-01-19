@@ -25,46 +25,54 @@ class Reflection
         try {
             Class klass = Class.forName(className);
 
-            System.out.println("Package:");
-            System.out.println("package " + klass.getPackage().getName() + ";");
-            System.out.println();
-
+            printPackage(klass);
             printInterfaces(klass);
-            System.out.println();
-
-            System.out.println("Class:");
-            printModifiers(klass.getModifiers());
-            System.out.print("class ");
-            System.out.println(klass.getSimpleName());
-            System.out.println();
-
+            printClass(klass);
             printConstructors(klass);
-            System.out.println();
-
             printMethods(klass);
-            System.out.println();
-
             printFields(klass);
-            System.out.println();
         } catch (ClassNotFoundException exception) {
             System.out.println("The requested class " + className + " is not found");
         }
     }
 
+    private static void printPackage(Class klass) {
+        System.out.println("Package:");
+        System.out.println("package " + klass.getPackage().getName() + ";");
+        System.out.println();
+    }
+
+    private static void printClass(Class klass) {
+        System.out.println("Class:");
+        printModifiers(klass.getModifiers());
+        System.out.print("class ");
+        System.out.println(klass.getSimpleName());
+        System.out.println();
+    }
+
     private static void printFields(Class klass) {
         Field[] fields = klass.getFields();
 
-        System.out.println("Fields: ");
+        if (fields.length > 0) {
+            System.out.println("Fields: ");
+        }
+
         for (Integer index = 0; index < fields.length; index++) {
             Field field = fields[index];
 
             printModifiers(field.getModifiers());
             System.out.println(field.getName());
         }
+
+        System.out.println();
     }
 
     private static void printMethods(Class klass) {
         Method[] methods = klass.getMethods();
+
+        if (methods.length > 0) {
+            System.out.println("Methods:");
+        }
 
         for (Integer index = 0; index < methods.length; index++) {
             Method method = methods[index];
@@ -77,12 +85,17 @@ class Reflection
             System.out.print(")");
             System.out.println();
         }
+
+        System.out.println();
     }
 
     private static void printConstructors(Class klass) {
         Constructor[] constructors = klass.getConstructors();
 
-        System.out.println("Constructors: ");
+        if (constructors.length > 0) {
+            System.out.println("Constructors: ");
+        }
+
         for (Integer index = 0; index < constructors.length; index++) {
             Constructor constructor = constructors[index];
 
@@ -96,7 +109,31 @@ class Reflection
 
             index++;
         }
+
+        System.out.println();
     }
+
+    private static void printInterfaces(Class klass) {
+        Class[] interfaces = klass.getInterfaces();
+
+        if (interfaces.length > 0) {
+            System.out.println("Interfaces: ");
+        }
+
+        for (Integer index = 0; index < interfaces.length; index++) {
+            Class interfac = interfaces[index];
+
+            printModifiers(interfac.getModifiers());
+
+            System.out.println(interfac.getName());
+
+            index++;
+        }
+
+        System.out.println();
+    }
+
+
 
     private static void printModifiers(int currentModifiers) {
         System.out.print(Modifier.toString(currentModifiers) + " ");
@@ -111,21 +148,6 @@ class Reflection
             if (index != parameters.length - 1) {
                 System.out.print(", ");
             }
-        }
-    }
-
-    private static void printInterfaces(Class klass) {
-        Class[] interfaces = klass.getInterfaces();
-
-        System.out.println("Interfaces: ");
-        for (Integer index = 0; index < interfaces.length; index++) {
-            Class interfac = interfaces[index];
-
-            printModifiers(interfac.getModifiers());
-
-            System.out.println(interfac.getName());
-
-            index++;
         }
     }
 }

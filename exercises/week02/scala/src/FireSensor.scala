@@ -1,5 +1,5 @@
-class FireSensor extends Sensor {
-  override def isTriggered: Boolean = false
+class FireSensor(trigger: Trigger) extends Sensor {
+  override def isTriggered: Boolean = trigger.trigger
 
   override def getLocation: String = null
 

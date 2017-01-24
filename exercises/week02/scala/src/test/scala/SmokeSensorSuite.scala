@@ -1,28 +1,29 @@
-import org.junit.Test
-import org.junit.Assert.assertEquals
+import org.scalatest.FunSuite
+import org.scalactic.TripleEquals
+import org.scalactic.Tolerance
 
-class SmokeSensorTest {
-  @Test def testThatIsTriggeredReturnsFalse() {
+class SmokeSensorSuite extends FunSuite with TripleEquals with Tolerance {
+  test("that is triggered returns false") {
     val sensor: SmokeSensor = new SmokeSensor(new ProbabilityTrigger(0))
     val isTriggered: Boolean = sensor.isTriggered
-    assertEquals(false, isTriggered)
+    assert(!isTriggered)
   }
 
-  @Test def testThatGetLocationReturnsNull() {
+  test("that get location returns null") {
     val sensor: SmokeSensor = new SmokeSensor(new ProbabilityTrigger(0))
     val location: String = sensor.getLocation
-    assertEquals(null, location)
+    assert(location == null)
   }
 
-  @Test def testThatGetSensorTypeReturnsNull() {
+  test("that get sensor type returns null") {
     val sensor: SmokeSensor = new SmokeSensor(new ProbabilityTrigger(0))
     val sensorType: String = sensor.getSensorType
-    assertEquals(null, sensorType)
+    assert(sensorType == null)
   }
 
-  @Test def testThatGetBatteryPercentageReturnsNegativeOne() {
+  test("that get battery percentage returns negative one") {
     val sensor: SmokeSensor = new SmokeSensor(new ProbabilityTrigger(0))
     val batteryPercentage: Double = sensor.getBatteryPercentage
-    assertEquals(-1.0, batteryPercentage, 0.01)
+    assert(batteryPercentage === -1.0 +- 0.01)
   }
 }

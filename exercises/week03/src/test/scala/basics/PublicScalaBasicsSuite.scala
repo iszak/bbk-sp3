@@ -24,6 +24,18 @@ class PublicScalaBasicsSuite extends FunSuite {
     }
   }
 
+  test("[3] sumChars should sum up the characters as integers from its parameters") {
+    TreeTraversals.getMethod("src/main/scala/basics/ScalaBasics.scala", "sumChars") match {
+      case Some(method) =>
+        assert(TreeTraversals.hasVarDef(method), "Your implementation did not use a var declaration")
+        assert(TreeTraversals.hasForEach(method), "You implementation must use a for loop")
+      case None =>
+        fail("The method isPalindrome does not exist")
+    }
+    assert(sumChars("chicken".toCharArray: _*) == 725, "chicken should sum to 725")
+    assert(sumChars("the true sign of intelligence is not ...".toCharArray: _*) == 3601, "this should sum to 3601")
+  }
+
   test("[4] The oddRange function should return a range of all odd integers from 1 to n") {
     for (n <- 1 to 1000) {
       val r = oddRange(n)
@@ -121,16 +133,4 @@ class PublicScalaBasicsSuite extends FunSuite {
         Map("this" -> 2, "is" -> 2, "a" -> 2, "sentence." -> 1, "sentence" -> 1, "too!" -> 1)
     )
   }
-
-   test("[3] sumChars should sum up the characters as integers from its parameters") {
-     TreeTraversals.getMethod("src/main/scala/basics/ScalaBasics.scala", "sumChars") match {
-       case Some(method) =>
-         assert(TreeTraversals.hasVarDef(method), "Your implementation did not use a var declaration")
-         assert(TreeTraversals.hasForEach(method), "You implementation must use a for loop")
-       case None =>
-         fail("The method isPalindrome does not exist")
-     }
-     assert(sumChars("chicken".toCharArray: _*) == 725, "chicken should sum to 725")
-     assert(sumChars("the true sign of intelligence is not ...".toCharArray: _*) == 3601, "this should sum to 3601")
-   }
 }

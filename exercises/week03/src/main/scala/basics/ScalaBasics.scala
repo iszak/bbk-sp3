@@ -168,7 +168,15 @@ object ScalaBasics {
    * @param s the potential palindrome
    * @return true if s is a palindrome; false otherwise
    */
-  def isPalindrome(s: String): Boolean = ???
+  def isPalindrome(s: String): Boolean = {
+    val s1 = s.toLowerCase.replaceAll("[.?,;!-' ]", "")
+
+    val contains = (for (i <- 0 until s1.length / 2)
+      yield s1(i) == s1(s1.length - 1 - i)
+    ).contains(false)
+
+    !contains
+  }
 
   /**
    * You don't have to complete this one as we've removed it from the list 

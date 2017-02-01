@@ -3,3 +3,8 @@
 - Create sensors (and setup dependencies)
 - Poll sensors
 - Output status
+
+
+5. Investigate the pollSensors method again, as you did in the previous exercise. What are the responsibilities now?
+- Poll sensors
+- Output status

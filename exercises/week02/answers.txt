@@ -1,0 +1,5 @@
+3. Examine the ControlUnit.pollSensors() method. What are its current respon- sibilities? (No need to do anything, just make sure you find all the responsibilities before you continue). Ask an instructor if you’re not sure.
+
+- Create sensors (and setup dependencies)
+- Poll sensors
+- Output status

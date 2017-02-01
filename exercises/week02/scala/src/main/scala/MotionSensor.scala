@@ -1,0 +1,1 @@
+trait MotionSensor extends Sensor

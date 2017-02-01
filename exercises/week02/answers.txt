@@ -15,3 +15,9 @@
 The "L" in SOLID, that is Liskov substitution principle which states "objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.". This is because we can't implement the Sensor trait for a non-battery powered sensor without violating this principle as we don't follow the contract.
 
 The "I" in SOLID, that is Interface segregation principle which states "many client-specific interfaces are better than one general-purpose interface.". This is because as we implement this trait we are forced to use a general purpose interface which includes methods we do not need or possibly even use.
+
+
+10. Which SOLID principle are we maintaining/not breaking by doing this?
+
+- The "L" in SOLID, that is Liskov substitution principle. This is because our program can replace an instance of ControlUnit with a SecurityControlUnit without altering the correctness of the program.
+- The "O" in SOLID, that is "Open/closed principle" which states "software entities should be open for extension, but closed for modification.". This is because instead of modifying the ControlUnit directly we extend it and augmenting it.

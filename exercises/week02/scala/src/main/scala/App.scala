@@ -7,9 +7,14 @@ object App {
 
   @throws[IOException]
   def main(args: Array[String]) {
-    val controlUnit: ControlUnit = new ControlUnit
+    val sensors = Array[Sensor](
+      new FireSensor(new ProbabilityTrigger(5)),
+      new SmokeSensor(new ProbabilityTrigger(10))
+    )
+    val controlUnit: ControlUnit = new ControlUnit(sensors)
     val scanner: Scanner = new Scanner(System.in)
     var input: String = ""
+
     while (input != EXIT) {
       println("Type \"poll\" to poll all sensors once or \"exit\" to exit")
       input = scanner.nextLine

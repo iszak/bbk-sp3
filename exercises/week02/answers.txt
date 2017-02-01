@@ -8,3 +8,10 @@
 5. Investigate the pollSensors method again, as you did in the previous exercise. What are the responsibilities now?
 - Poll sensors
 - Output status
+
+
+6. A new use case! This is no longer a alarm system for only detecting hazards, it should now also include security such as motion and heat sensors. However, these sensors don’t run on a battery so one of the Sensor interface methods is suddenly redundant for a whole set of sensors. Which method is this and what SOLID principle does this break?
+
+The "L" in SOLID, that is Liskov substitution principle which states "objects in a program should be replaceable with instances of their subtypes without altering the correctness of that program.". This is because we can't implement the Sensor trait for a non-battery powered sensor without violating this principle as we don't follow the contract.
+
+The "I" in SOLID, that is Interface segregation principle which states "many client-specific interfaces are better than one general-purpose interface.". This is because as we implement this trait we are forced to use a general purpose interface which includes methods we do not need or possibly even use.

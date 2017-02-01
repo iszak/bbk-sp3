@@ -32,4 +32,4 @@ b) Test that the different strategies was triggered
 - Create a trait called "Notification" 
 - Add the method "notify" to the trait
 - Possibly add location and sensor type as parameters to the Notification (although this may violate S in SOLID since the Notification will be dispatching the notification but also checking if it applies, but it's not horrible)
-
+- Return a boolean whether it was successful or not

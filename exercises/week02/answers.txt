@@ -21,3 +21,15 @@ The "I" in SOLID, that is Interface segregation principle which states "many cli
 
 - The "L" in SOLID, that is Liskov substitution principle. This is because our program can replace an instance of ControlUnit with a SecurityControlUnit without altering the correctness of the program.
 - The "O" in SOLID, that is "Open/closed principle" which states "software entities should be open for extension, but closed for modification.". This is because instead of modifying the ControlUnit directly we extend it and augmenting it.
+
+
+
+13. We want to test that an alarm is raised, and also implement different alarm notification methods (For example: automatically call the fire department, call the owner’s phone, and trigger the control unit alarm siren). Plan how you can extract the announcement logic and:
+
+a) Trigger many different announcement strategies
+b) Test that the different strategies was triggered
+
+- Create a trait called "Notification" 
+- Add the method "notify" to the trait
+- Possibly add location and sensor type as parameters to the Notification (although this may violate S in SOLID since the Notification will be dispatching the notification but also checking if it applies, but it's not horrible)
+

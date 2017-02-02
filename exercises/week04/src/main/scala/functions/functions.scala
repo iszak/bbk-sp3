@@ -114,7 +114,10 @@ object Funcs {
     case _ => reverse(ls.tail) ::: List(ls.head)
   }
 
-  def flatten[A](ls: List[List[A]]): List[A] = ???
+  def flatten[A](ls: List[List[A]]): List[A] = ls match {
+    case List() => List()
+    case _ => ls.head ::: flatten(ls.tail)
+  }
 
   // MAP AND FILTER
 

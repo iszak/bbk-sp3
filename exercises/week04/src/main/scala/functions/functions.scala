@@ -104,7 +104,10 @@ object Funcs {
     case _ => ls.head * product(ls.tail)
   }
 
-  def length[A](ls: List[A]): Int = ???
+  def length[A](ls: List[A]): Int = ls match {
+    case List() => 0
+    case _ => 1 + length(ls.tail)
+  }
 
   def reverse[A](ls: List[A]): List[A] = ???
 

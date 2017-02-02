@@ -68,6 +68,9 @@ class FunctionsTestSuite extends FunSuite {
   test("length calculates the length") {
     assert(length("Hello".toList) == 5)
   }
+  test("length calculates the length of an empty list") {
+    assert(length(List()) == 0)
+  }
 
   test("reverse reverses the list") {
     assert(reverse("Hello".toList) == "olleH".toList)

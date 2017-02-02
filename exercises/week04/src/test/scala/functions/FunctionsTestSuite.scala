@@ -21,8 +21,17 @@ class FunctionsTestSuite extends FunSuite {
     assert(setHead(List(), "0") == List("0"))
   }
 
+  test("drop removes only element from the front of the list") {
+    assert(drop(List(1), 1) == List())
+  }
+  test("drop removes 1 element from the front of the list") {
+    assert(drop(List(1,2,3), 1) == List(2,3))
+  }
   test("drop removes N elements from the front of the list") {
     assert(drop(List(1, 2, 3), 2) == List(3))
+  }
+  test("drop removes all elements from the list") {
+    assert(drop(List(1, 2, 3), 10) == List())
   }
 
   test("init removes the last element") {

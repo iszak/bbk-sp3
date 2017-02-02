@@ -109,7 +109,10 @@ object Funcs {
     case _ => 1 + length(ls.tail)
   }
 
-  def reverse[A](ls: List[A]): List[A] = ???
+  def reverse[A](ls: List[A]): List[A] = ls match {
+    case List() => List()
+    case _ => reverse(ls.tail) ::: List(ls.head)
+  }
 
   def flatten[A](ls: List[List[A]]): List[A] = ???
 

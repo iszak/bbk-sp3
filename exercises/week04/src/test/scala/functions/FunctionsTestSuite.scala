@@ -54,6 +54,9 @@ class FunctionsTestSuite extends FunSuite {
   test("sum produces the correct sum") {
     assert(sum(List(1.0, 2.0, 3.0, -3.0, -2.0, -1.0)) == 0.0)
   }
+  test("sum zero elements produces the zero sum") {
+    assert(sum(List()) == 0.0)
+  }
 
   test("product produces the correct product") {
     assert(product(List(1.0, 2.0, 3.0, 4.0, 5.0)) == 120.0)

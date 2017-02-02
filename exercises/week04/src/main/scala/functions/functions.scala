@@ -93,31 +93,15 @@ object Funcs {
     * the sublists into one long list. For example, flatten(List(List(1,2,3),
     * List(4,5,6))) produces List(1,2,3,4,5,6).
     */
-  def sum(ls: List[Double]): Double = ls match {
-    case List() => 0.0
-    case _ => ls.head + sum(ls.tail)
-  }
+  def sum(ls: List[Double]): Double = foldLeft[Double, Double](ls, 0.0)((B, A) => B + A)
 
-  def product(ls: List[Double]): Double = ls match {
-    // TODO: Check if empty product should equal 1 (not zero)
-    case List() => 1
-    case _ => ls.head * product(ls.tail)
-  }
+  def product(ls: List[Double]): Double = foldLeft[Double, Double](ls, 1.0)((B, A) => B * A)
 
-  def length[A](ls: List[A]): Int = ls match {
-    case List() => 0
-    case _ => 1 + length(ls.tail)
-  }
+  def length[A](ls: List[A]): Int = foldLeft[A, Int](ls, 0)((B, A) => B + 1)
 
-  def reverse[A](ls: List[A]): List[A] = ls match {
-    case List() => List()
-    case _ => reverse(ls.tail) ::: List(ls.head)
-  }
+  def reverse[A](ls: List[A]): List[A] = foldLeft[A, List[A]](ls, List[A]())((B, A) => List[A](A) ::: B)
 
-  def flatten[A](ls: List[List[A]]): List[A] = ls match {
-    case List() => List()
-    case _ => ls.head ::: flatten(ls.tail)
-  }
+  def flatten[A](ls: List[List[A]]): List[A] = foldLeft[List[A], List[A]](ls, List[A]())((B, A) => B ::: A)
 
   // MAP AND FILTER
 

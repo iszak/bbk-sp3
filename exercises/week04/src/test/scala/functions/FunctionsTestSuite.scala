@@ -37,6 +37,14 @@ class FunctionsTestSuite extends FunSuite {
   test("init removes the last element") {
     assert(init(List("A", "B", "C", "D")) == List("A", "B", "C"))
   }
+  test("init removes the only element") {
+    assert(init(List("A")) == List())
+  }
+  test("init throws exception on empty list") {
+    assertThrows[IllegalArgumentException] {
+      init(List())
+    }
+  }
 
   // Folding
   test("foldLeft computes the correct value") {

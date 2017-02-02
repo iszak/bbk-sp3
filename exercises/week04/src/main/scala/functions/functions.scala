@@ -98,7 +98,11 @@ object Funcs {
     case _ => ls.head + sum(ls.tail)
   }
 
-  def product(ls: List[Double]): Double = ???
+  def product(ls: List[Double]): Double = ls match {
+    // TODO: Check if empty product should equal 1 (not zero)
+    case List() => 1
+    case _ => ls.head * product(ls.tail)
+  }
 
   def length[A](ls: List[A]): Int = ???
 

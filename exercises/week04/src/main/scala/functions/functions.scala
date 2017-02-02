@@ -114,7 +114,10 @@ object Funcs {
     * @param f  : A => B the function to be applied to each element of the input.
     * @return the resulting list from applying f to each element of ls.
     */
-  def map[A, B](ls: List[A])(f: A => B): List[B] = ???
+  def map[A, B](ls: List[A])(f: A => B): List[B] = ls match {
+    case List() => List()
+    case _ => List(f(ls.head)) ::: map(ls.tail)(f)
+  }
 
   /**
     * filter removes all elements from a list for which a given predicate

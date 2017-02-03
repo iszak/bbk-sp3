@@ -186,5 +186,12 @@ object Funcs {
     * @param ls     : List[Double] a list of values, whose length is greater than 0.
     * @param return the variance of the input.
     */
-  def variance(ls: List[Double]): Double = ???
+  def variance(ls: List[Double]): Double = {
+    val L = length(ls)
+    val M = foldLeft[Double, Double](ls, 0.0)((B, A) => B + A) / L
+
+    foldLeft[Double, Double](ls, 0.0)(
+      (B, A) => ((A - M) * (A - M)) + B
+    ) / L
+  }
 }

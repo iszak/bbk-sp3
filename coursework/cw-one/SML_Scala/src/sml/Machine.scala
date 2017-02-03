@@ -13,7 +13,7 @@ case class Machine(labels: Labels, prog: Vector[Instruction]) {
   val regs: Registers = new Registers(NUMBER_OF_REGISTERS)
 
   override def toString(): String = {
-    prog.foldLeft("")(_ + _)
+    prog.foldLeft("")(_ + _ + "\n")
   }
 
   // Execute the program in prog, beginning at instruction 0.

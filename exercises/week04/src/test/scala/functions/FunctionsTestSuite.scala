@@ -98,14 +98,15 @@ class FunctionsTestSuite extends FunSuite {
   }
 
   // Combined
-
   test("maxAverage calculates the max average") {
     val list = List(1.0, 2.0, 3.0, 4.0, 5.0).map(x => (x, x + 10))
     assert(maxAverage(list) == 13.0)
   }
+  // TODO: Test for empty list
 
   test("variance calculates the correct variance") {
     val v = variance(List(1.0, 2.0, 3.0, 4.0, 5.0))
     assert(v == 2.0, "If you got 2.5, you divided by the wrong thing, probably.")
   }
+  // TODO: Test for empty list
 }

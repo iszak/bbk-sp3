@@ -1,13 +1,9 @@
-object Counter {
-  def apply(n: Int) = new Counter(n)
-}
+case class Counter (n:Int) {
+  def inc = this.copy(n + 1)
+  def inc(m: Int) = this.copy(n + m)
 
-class Counter (n:Int) {
-  def inc = Counter(n + 1)
-  def inc(m: Int) = Counter(n + m)
-
-  def dec = Counter(n - 1)
-  def dec(m: Int) = Counter(n - m)
+  def dec = this.copy(n - 1)
+  def dec(m: Int) = this.copy(n - m)
 
   def count = n
 }

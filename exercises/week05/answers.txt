@@ -1,0 +1,3 @@
+2. 
+  b) What happens when we define a companion object for a case class?
+    TODO

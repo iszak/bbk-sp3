@@ -1,3 +1,4 @@
 2. 
   b) What happens when we define a companion object for a case class?
-    TODO
+    If the companion object has an apply method and the case class share the same parameters, they will error with the message "method apply is defined twice"
+

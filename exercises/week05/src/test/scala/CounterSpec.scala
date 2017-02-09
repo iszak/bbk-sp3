@@ -1,10 +1,10 @@
 import org.scalatest.FunSuite
 
 class CounterSuite extends FunSuite {
-  test("that counter can incremenet") {
+  test("that counter can increment") {
     assert(Counter(0).inc.inc.inc.inc.count == 4)
   }
-  test("that counter can incremenet by n") {
+  test("that counter can increment by n") {
     assert(Counter(0).inc(1).inc(2).inc(3).inc(4).count == 10)
   }
 

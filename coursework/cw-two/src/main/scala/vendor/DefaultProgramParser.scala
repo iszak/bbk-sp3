@@ -32,6 +32,7 @@ class DefaultProgramParser extends ProgramParser {
     val instruction = line.split(" ").toList
     val name = instruction.head
     val args = instruction.tail.map(arg => arg.toInt).toVector
+    // TODO: Throw InvalidInstructionFormatException
 
     new Instruction(name, args)
   }

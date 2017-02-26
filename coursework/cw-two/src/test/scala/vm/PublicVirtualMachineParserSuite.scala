@@ -7,6 +7,8 @@ import org.scalatest.FunSuite
 class PublicVirtualMachineParserSuite extends FunSuite with ByteCodeValues {
   val vmp = VirtualMachineFactory.virtualMachineParser
 
+  // TODO: Add tests for parseString
+
   test("[8] vm parser should parse programs/p01.vm a file into bytecode") {
     val code = vmp.parse("programs/p01.vm")
     assert(code.length == 4)

@@ -2,7 +2,7 @@ package vendor
 
 import scala.io.Source
 
-class DefaultProgramParser extends ProgramParser {
+class PublicProgramParser extends ProgramParser {
   /**
     * Parses a file representation of a bytecode program
     * into an `InstructionList`.

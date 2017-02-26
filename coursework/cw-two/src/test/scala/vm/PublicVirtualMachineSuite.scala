@@ -38,6 +38,14 @@ class PublicVirtualMachineSuite extends FunSuite {
     assert(tuple._2.state == newVm2.state)
   }
 
+  test("pop remove throw exception if no values on stack") {
+    val newVm: VirtualMachine = new PublicVirtualMachine(Vector[Int]())
+
+    assertThrows[MachineUnderflowException] {
+      newVm.pop()
+    }
+  }
+
   test("executeOne executes bytecode and retuns new VM") {
     val bcVector:Vector[ByteCode] = Vector(new IConstByteCode(1), new IConstByteCode(2))
     val newVm:VirtualMachine = new PublicVirtualMachine(Vector[Int]())

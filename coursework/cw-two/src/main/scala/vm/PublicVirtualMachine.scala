@@ -57,9 +57,14 @@ class PublicVirtualMachine(stack:Vector[Int]) extends VirtualMachine {
     *         new virtual machine
     */
   override def pop(): (Int, VirtualMachine) = {
-    val newState = state.take(state.length - 1)
+    val length = state.length
+
+    if (length == 0)
+      throw new MachineUnderflowException("Pop applied on an empty stack")
+
+    val newState = state.take(length - 1)
     val newVM = new PublicVirtualMachine(newState)
-    (state(state.length - 1), newVM)
+    (state(length - 1), newVM)
   }
 
   /**

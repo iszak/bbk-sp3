@@ -2,7 +2,7 @@ package factory
 
 import bc.{ByteCodeFactory, PublicByteCodeFactory, PublicByteCodeParser}
 import vendor.{ProgramParser, PublicProgramParser}
-import vm.{PublicVirtualMachine, VirtualMachine, VirtualMachineParser}
+import vm.{PublicVirtualMachine, PublicVirtualMachineParser, VirtualMachine, VirtualMachineParser}
 
 /**
   * The `VirtualMachineFactory` follows the *factory pattern*. It provides
@@ -10,16 +10,13 @@ import vm.{PublicVirtualMachine, VirtualMachine, VirtualMachineParser}
   * implement each method such that it returns an object of the correct type.
   */
 object VirtualMachineFactory {
-  // TODO
   def byteCodeFactory: ByteCodeFactory = new PublicByteCodeFactory
 
   def vendorParser: ProgramParser = new PublicProgramParser
 
-  // TODO
   def byteCodeParser: PublicByteCodeParser = new PublicByteCodeParser(byteCodeFactory)
 
-  // TODO
-  def virtualMachineParser: VirtualMachineParser = ???
+  def virtualMachineParser: VirtualMachineParser = new PublicVirtualMachineParser(byteCodeParser,vendorParser)
 
   def virtualMachine: VirtualMachine = new PublicVirtualMachine(Vector[Int]())
 

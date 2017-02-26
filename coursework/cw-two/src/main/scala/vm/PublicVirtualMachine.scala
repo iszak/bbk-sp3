@@ -60,7 +60,7 @@ class PublicVirtualMachine(stack:Vector[Int]) extends VirtualMachine {
     val length = state.length
 
     if (length == 0)
-      throw new MachineUnderflowException("Pop applied on an empty stack")
+      throw new MachineUnderflowException("Pop applied on an empt ")
 
     val newState = state.take(length - 1)
     val newVM = new PublicVirtualMachine(newState)

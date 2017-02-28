@@ -1,11 +1,9 @@
 package decorator
 
 class SimplyVegPizza extends Pizza {
-  def getDesc: String = {
-    return null
-  }
+  private val price = 230
 
-  def getPrice: Double = {
-    return 0
-  }
+  def getDesc: String = "SimplyVegPizza (" + price + ")"
+
+  def getPrice: Double = price
 }

@@ -1,11 +1,9 @@
 package decorator
 
-class Ham(val pizza: Pizza) extends Pizza {
-  def getDesc: String = {
-    return null
-  }
+class Ham(val pizza: Pizza) extends PizzaDecorator {
+  private val price = 18.12
 
-  def getPrice: Double = {
-    return 0
-  }
+  def getDesc: String = pizza.getDesc + ", Ham (" + price + ")"
+
+  def getPrice: Double = pizza.getPrice + price
 }

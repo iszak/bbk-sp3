@@ -1,0 +1,6 @@
+1.
+(a) Briefly describe the Strategy Design Pattern?
+The strategy pattern is when you have a group of different implementations that need to be changed interchangably within that group.
+
+(b) When is it appropriate to use the Strategy Design Pattern?
+See above?

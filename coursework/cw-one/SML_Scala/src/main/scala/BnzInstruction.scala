@@ -5,7 +5,7 @@ case class BnzInstruction(label: String, opcode: String, register: Int, value: S
   override def execute(m: Machine) = {
     if (m.regs(register) != 0) {
       m.pc = m.labels.indexOf(value) match {
-        case -1 => throw new IllegalArgumentException("")
+        case -1 => throw new IllegalArgumentException("Label not found " + value)
         case x => x
       }
     }

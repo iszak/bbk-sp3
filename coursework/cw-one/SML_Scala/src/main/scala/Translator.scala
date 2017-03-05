@@ -22,23 +22,37 @@ class Translator(fileName: String) {
     for (line <- lines) {
       val fields = line.split(" ")
       if (fields.length > 0) {
-        labels.add(fields(0))
-        fields(1) match {
-          case ADD =>
-            program = program :+ AddInstruction(fields(0), fields(2).toInt, fields(3).toInt, fields(4).toInt)
-          case LIN =>
-            program = program :+ LinInstruction(fields(0), fields(2).toInt, fields(3).toInt)
-          case MUL =>
-            program = program :+ MulInstruction(fields(0), fields(2).toInt, fields(3).toInt, fields(4).toInt)
-          case SUB =>
-            program = program :+ SubInstruction(fields(0), fields(2).toInt, fields(3).toInt, fields(4).toInt)
-          case BNZ =>
-            program = program :+ BnzInstruction(fields(0), fields(2).toInt, fields(3))
-          case OUT =>
-            program = program :+ OutInstruction(fields(0), fields(2).toInt)
-          case x =>
-            println(s"Unknown instruction $x")
-        }
+        val label = fields(0)
+        val instruction = fields(1)
+
+        val packageName = this.getClass.getPackage.getName
+        val className = instruction.capitalize + "Instruction"
+        val klass = Class.forName(packageName + "." + className)
+
+        // NOTE: This is not ideal if there is more than one constructor
+        val constructor = klass.getConstructors()(0)
+        val parameters = constructor.getParameterTypes
+
+        val args:Array[AnyRef] = fields.zipWithIndex.map(
+          (element) => {
+            val value = element._1
+            val klass = parameters(element._2)
+
+            if (klass.isPrimitive) {
+              if (klass.toString == "int") {
+                value.toInt.asInstanceOf[AnyRef]
+              } else {
+                throw new IllegalArgumentException("Unsupported primitive type")
+              }
+            } else {
+              klass.cast(value).asInstanceOf[AnyRef]
+            }
+          }
+        )
+
+        program = program :+ constructor.newInstance(args:_*).asInstanceOf[Instruction]
+
+        labels.add(label)
       }
     }
     new Machine(labels, program)

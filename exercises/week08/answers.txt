@@ -22,3 +22,16 @@ To improve the API exposed by the encapsulated class, this may be to improve usa
 
 8. When should one make use of the Bridge Design Pattern?
 When you want to decouple the abstraction from its implementation, this will allow the two to vary.
+
+
+11. (a) What is the Composite Pattern?
+The composite pattern is when you treat a single object and a collection of objects (of the same type as the single object) in the same way
+
+11. (b) Under what conditions would you use a Composite Design Pattern?
+When you want to simplify the code and you've got the same usage between a single and collection of objects.
+
+11. (c) What are the four participants of the Composite Design Pattern?
+The interface that the collection and single instance uses
+The implementation of the interface for the collection
+The implementation of the interface for the single instance
+The client that uses the interface

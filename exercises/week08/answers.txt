@@ -8,3 +8,6 @@ See above?
 
 3. When is it appropriate to use the Abstract Factory design pattern?
 When you want to decouple the interface to create a class from the interface of the created class such that you can easily implement a new factory or replace it and still receive back a class which conforms to your expectations (see polymorphism, liskov substitution principle)
+
+5. “In general, the details of object construction, such as instantiating and initialising the components that comprise the object, are kept within the object, often as part of its constructor.” Comment on this statement with reference to modularity and construction bloat.
+If the components that are necessary to use an object are all kept and created within the object, this may mean we're unable to substitution these dependencies which reduces the modularity of the code. On the other hand if we inject everything into the constructor as a hard dependency, this may lead to construction bloat which requires many dependencies simply to use the class - this may be a sign of bad design but it can at least be mitigated by the use of a factory. The factory will find or create the dependencies and inject them into the constructor, this means any users of the object with constructor bloat can just use the factory without worrying about how it's setup.

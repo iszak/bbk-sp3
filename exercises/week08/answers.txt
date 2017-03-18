@@ -11,3 +11,10 @@ When you want to decouple the interface to create a class from the interface of 
 
 5. “In general, the details of object construction, such as instantiating and initialising the components that comprise the object, are kept within the object, often as part of its constructor.” Comment on this statement with reference to modularity and construction bloat.
 If the components that are necessary to use an object are all kept and created within the object, this may mean we're unable to substitution these dependencies which reduces the modularity of the code. On the other hand if we inject everything into the constructor as a hard dependency, this may lead to construction bloat which requires many dependencies simply to use the class - this may be a sign of bad design but it can at least be mitigated by the use of a factory. The factory will find or create the dependencies and inject them into the constructor, this means any users of the object with constructor bloat can just use the factory without worrying about how it's setup.
+
+
+7. (a) What is the Facade Pattern?
+The facade pattern is when you create a class which encapsulates another class but provides a higher level interface (usually simpler)
+
+7. (b) When, and why, would you use the Facade Pattern?
+To improve the API exposed by the encapsulated class, this may be to improve usability, readability or reduce dependencies

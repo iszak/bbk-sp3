@@ -4,6 +4,7 @@ The strategy pattern is when you have a group of different implementations that 
 
 (b) When is it appropriate to use the Strategy Design Pattern?
 See above?
+TODO
 
 
 3. When is it appropriate to use the Abstract Factory design pattern?

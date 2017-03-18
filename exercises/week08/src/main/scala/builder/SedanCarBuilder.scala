@@ -1,21 +1,39 @@
 package builder
 
-//TODO
-
 object SedanCarBuilder extends CarBuilder {
-  override def buildBodyStyle: Unit = ???
+  private val car = Car("Sedan")
 
-  override def buildPower: Unit = ???
+  override def buildBodyStyle: Unit = car.setBodyStyle(
+    """ External dimensions: overall length (inches): 202.9,
+      |overall width (inches): 76.2, overall height (inches): 60.7,
+      |wheelbase (inches): 112.9, front track (inches): 65.3,
+      |rear track (inches): 65.5 and curb to curb turning circle (feet): 39.5
+    """.stripMargin.replace("\n", "")
+  )
 
-  override def buildEngine: Unit = ???
+  override def buildPower: Unit = car.setPower(
+    """285 hp @ 6,500 rpm; 253 ft lb of torque @ 4,000 rpm"""
+  )
 
-  override def buildBreaks: Unit = ???
+  override def buildEngine: Unit = car.setEngine(
+    """3.5L Duramax V 6 DOHC"""
+  )
 
-  override def buildSeats: Unit = ???
+  override def buildBreaks: Unit = car.setBreaks(
+    """Four-wheel disc brakes: two ventilated. Electronic brake distribution"""
+  )
 
-  override def buildWindows: Unit = ???
+  override def buildSeats: Unit = car.setSeats(
+    """Front seat centre armrest.Rear seat centre armrest.Split-folding rear seats"""
+  )
 
-  override def buildFuelType: Unit = ???
+  override def buildWindows: Unit = car.setWindows(
+    """Laminated side windows.Fixed rear window with defroster"""
+  )
 
-  override def getCar: Car = ???
+  override def buildFuelType: Unit = car.setFuelType(
+    """Diesel 19 MPG city, 29 MPG highway, 23 MPG combined and 437 mi. range"""
+  )
+
+  override def getCar: Car = car
 }

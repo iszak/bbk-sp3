@@ -1,10 +1,11 @@
 package composite
 
-// TODO
+import scala.collection.JavaConverters._
+
 case class HtmlParentElement(s: String) extends HtmlTag(s) {
-  override def setStartTag(tag: String): Unit = ???
-
-  override def setEndTag(tag: String): Unit = ???
-
-  override def generateHtml: Unit = ???
+  override def generateHtml: Unit = {
+    println(startTag)
+    children.asScala.foreach(child => child.generateHtml)
+    println(endTag)
+  }
 }

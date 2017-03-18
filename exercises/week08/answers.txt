@@ -31,7 +31,7 @@ The composite pattern is when you treat a single object and a collection of obje
 When you want to simplify the code and you've got the same usage between a single and collection of objects.
 
 11. (c) What are the four participants of the Composite Design Pattern?
-The interface that the collection and single instance uses
-The implementation of the interface for the collection
-The implementation of the interface for the single instance
-The client that uses the interface
+The interface that the collection and single instance uses (component)
+The implementation of the interface for the collection (composite)
+The implementation of the interface for the single instance (leaf)
+The client that uses the interface (client)

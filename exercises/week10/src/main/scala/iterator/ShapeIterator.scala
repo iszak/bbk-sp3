@@ -2,11 +2,19 @@ package iterator
 
 import java.util.Iterator
 
-class ShapeIterator(private var shapes: Array[Shape]) extends Iterator[Shape] {
+class ShapeIterator(var shapes: Array[Shape]) extends Iterator[Shape] {
+  private var index:Integer = 0
 
-  override def hasNext(): Boolean = ???
+  override def hasNext(): Boolean = index < shapes.length
 
-  override def next(): Shape = ???
+  override def next(): Shape = {
+    val shape = shapes(index)
+    index = index + 1
+    shape
+  }
 
-  override def remove(): Unit = ???
+  override def remove(): Unit = {
+    shapes = shapes.take(index - 1) ++ shapes.drop(index)
+    index = index - 1
+  }
 }

@@ -1,9 +1,13 @@
 package chain
 
 case class ExcelFileHandler(s: String) extends Handler {
-  override def setHandler(handler: Handler): Unit = ???
+  override def process(file: File): Unit = file.fileType match {
+    case "excel" => println(s"Processing file at ${file.fileName} path ${file.filePath} with ${getHandlerName()} ")
+    case _ => nextHandler match {
+      case Some(handler) => handler.process(file)
+      case _ => None
+    }
+  }
 
-  override def process(file: File): Unit = ???
-
-  override def getHandlerName(): String = ???
+  override def getHandlerName(): String = s
 }

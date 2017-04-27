@@ -21,7 +21,7 @@ object TestMediator extends App {
     
     println(
       "******************************************************************************")
-    
+
     mediator =
       new DenimMediator(machine, heater, motor, sensor, soilRemoval, valve)
     button.setMediator(mediator)

@@ -28,6 +28,5 @@ class CottonMediator(private val machine: Machine,
 
   override def off() = heater.off
 
-  override def checkTemperature(temp: Int): Boolean =
-    sensor.checkTemperature(temp)
+  override def checkTemperature(temp: Int): Boolean = sensor.checkTemperature(temp)
 }

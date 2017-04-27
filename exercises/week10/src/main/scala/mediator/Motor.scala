@@ -1,8 +1,7 @@
 package mediator
 
 class Motor {
+  def startMotor(): Unit = println("Starting motor...")
 
-  def startMotor(): Unit = ???
-
-  def rotateDrum(rpm: Int): Unit = ???
+  def rotateDrum(rpm: Int): Unit = println(s"Rotating drum at $rpm rpm.")
 }

@@ -1,11 +1,7 @@
 package mediator
 
 class Valve extends Colleague {
+  def open(): Unit = println("Valve is opened...")
 
-  override def setMediator(mediator: MachineMediator): Unit = ???
-
-  def open(): Unit = ???
-
-  def closed(): Unit = ???
-
+  def closed(): Unit = println("Valve is closed...")
 }

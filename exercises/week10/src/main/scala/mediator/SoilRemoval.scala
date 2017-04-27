@@ -1,10 +1,9 @@
 package mediator
 
 class SoilRemoval {
+  def low(): Unit = println("Setting Soil Removal to low")
 
-  def low(): Unit = ???
+  def medium(): Unit = println("Setting Soil Removal to medium")
 
-  def medium(): Unit = ???
-
-  def high(): Unit = ???
+  def high(): Unit = println("Setting Soil Removal to high")
 }

@@ -1,5 +1,7 @@
 package mediator
 
 trait Colleague {
-  def setMediator(mediator: MachineMediator): Unit
+  protected var mediator:MachineMediator = _
+
+  def setMediator(mediator: MachineMediator): Unit = this.mediator = mediator
 }

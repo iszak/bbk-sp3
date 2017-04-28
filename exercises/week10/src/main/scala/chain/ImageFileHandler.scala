@@ -2,10 +2,13 @@ package chain
 
 case class ImageFileHandler(s: String) extends Handler {
   override def process(file: File): Unit = file.fileType match {
-    case "image" => println(s"Processing file at ${file.fileName} path ${file.filePath} with ${getHandlerName()} ")
+    case "image" => println(s"Process and saving image file... by ${getHandlerName()}")
     case _ => nextHandler match {
-      case Some(handler) => handler.process(file)
-      case _ => None
+      case Some(handler) => {
+        println(s"${getHandlerName()} forwards request to ${handler.getHandlerName()}")
+        handler.process(file)
+      }
+      case _ => println("File not supported")
     }
   }
 

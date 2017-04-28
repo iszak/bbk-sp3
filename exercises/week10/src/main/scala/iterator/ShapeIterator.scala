@@ -14,7 +14,6 @@ class ShapeIterator(var shapes: Array[Shape]) extends Iterator[Shape] {
   }
 
   override def remove(): Unit = {
-    shapes = shapes.take(index - 1) ++ shapes.drop(index)
-    index = index - 1
+    shapes = shapes.take(index) ++ shapes.drop(index + 1)
   }
 }

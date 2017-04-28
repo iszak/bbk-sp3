@@ -1,0 +1,2 @@
+Question 2
+- There isn't any way to print job id, output is not deterministic (expected)

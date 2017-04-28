@@ -1,5 +1,5 @@
 package command
 
 class Logging {
-  def log: Unit = println("Logging to log.......")
+  def log: Unit = println("Logging...")
 }

@@ -11,6 +11,7 @@ case class Originator(
   createSavepoint("INITIAL")
 
   def createSavepoint(savepointName: String): Unit = {
+    println(s"Saving state...$savepointName")
     careTaker.saveMemento(Memento(x, y), savepointName)
     lastUndoSavepoint = savepointName
   }
@@ -20,12 +21,14 @@ case class Originator(
   def undo(savepointName: String): Unit = setOriginatorState(savepointName)
 
   def undoAll(): Unit = {
+    println("Clearing all save points...")
     setOriginatorState("INITIAL")
     careTaker.clearSavepoints()
     lastUndoSavepoint = null
   }
 
   private def setOriginatorState(savepointName: String): Unit = {
+    println(s"Undo at ...$savepointName")
     val memento = careTaker.getMemento(savepointName)
 
     x = memento.x

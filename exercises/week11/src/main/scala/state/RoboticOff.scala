@@ -1,7 +1,12 @@
 package state
 
 case class RoboticOff(r: Robot) extends RoboticState {
-  def walk(): Unit = ???
-  def cook(): Unit = ???
-  def off(): Unit = ???
+  // And finally, when in off state it will automatically turn on and walk when the user commands
+  // it to walk
+  def walk(): Unit = {
+    r.state = RoboticOn(r)
+    r.state.walk()
+  }
+  def cook(): Unit = println("Cannot cook at Off state.")
+  def off(): Unit = println("Robot is switched off")
 }
